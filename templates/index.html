@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        textarea {
+            width: 95%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d9534f; /* Defaults to redish for spam */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Email Spam/Ham Classifier</h2>
+        <p>Paste the content of an email below to check if it's spam.</p>
+        
+        <form action="/" method="POST">
+            <textarea name="email_content" rows="6" placeholder="Paste email text here..." required></textarea>
+            <br>
+            <button type="submit">Check Email</button>
+        </form>
+
+        {% if prediction_result %}
+            <div class="result">
+                {{ prediction_result }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
